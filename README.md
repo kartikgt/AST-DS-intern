@@ -1,4 +1,4 @@
-# Enriching Billing Price Transparency Data
+# Enriching Price Transparency Billing Code Data
 
 Insurance companies are now required to publish their rates for the various procedures they cover.
 In order to make this resource usable for analysts, we are enriching these data with
