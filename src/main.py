@@ -6,9 +6,9 @@ from io import StringIO
 # add skeleton class/module
 
 ###########################
-# Get APC data (description of certain billing codes that are important)
+# Get APR data
 ###########################
-
+# This txt file is just a "|" delimited table. So no cleaning is necessary
 apr_drg_url = "https://apps.3mhis.com/docs/Groupers/All_Patient_Refined_DRG/apr400_DRG_descriptions.txt"
 response = re.get(apr_drg_url)
 if response.status_code != 200:
@@ -19,9 +19,8 @@ apr_drg_df.DRG = apr_drg_df.DRG.astype(str).str.pad(3, fillchar="0")
 apr_drg_df.columns = [n.lower() for n in apr_drg_df.columns]
 
 
-
 ###########################
-# get descriptions for certain drg codes
+# get descriptions for certain mdc drg codes
 ###########################
 
 def get_mdc_drg():
@@ -33,10 +32,12 @@ def get_mdc_drg():
     table = table_to_end.split("</table>")[0]
     raw_rows = table.split("<tr><td>")
     cleaned_rows = map(clean_mdc_drg_row, raw_rows)
-    # If the cleaned row is empty, it has zero length, need to drop them.
+    # If the cleaned row is empty, result of clean_row has zero length. Drop them.
     rows_with_length = list(filter(lambda s: len(s) > 0, cleaned_rows))
     csved_rows = StringIO("\n".join(rows_with_length))
     df = pd.read_csv(csved_rows, header=None)
+
+    # These column headers were provided by the researcher. 
     df.columns = ["DRG", "MDC", "Type", "Long Description"]
 
     mdc_descriptions = get_mdc_descriptions()
@@ -91,6 +92,9 @@ mdc_drg_df = get_mdc_drg()
 # In the future, we want to use a database in the cloud, but we're using sqlite for development
 # right now. Need to keep flexibility in mind for now.
 import sqlite3
+
+# TODO: Once we're closer to production, we'll need a dev, stage, and prod environment. 
+# We should establish a way to connect to the database based on the environment.
 con = sqlite3.connect("tutorial.db")
 
 apr_drg_df.to_sql("apr_drg", con, if_exists="replace")
