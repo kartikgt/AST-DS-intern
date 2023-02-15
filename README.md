@@ -28,7 +28,7 @@ We have a copy of the database called `original_tutorial.db`. If you need to res
 
 ## Road Map
 
-This is just a proof of concept and we need load many more data sources. We need to refactor
+This is just a proof of concept and we need to load many more data sources. We need to refactor
 the current solution improve its extensibility and limit code duplication. Priorities:
 
 1. Clean up the spagetti code in `main.py`
