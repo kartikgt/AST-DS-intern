@@ -1,3 +1,7 @@
+# You don't need to worry about refactoring this file.
+# `load_config` is a helper function that you can use to load
+# a `config.yaml` file into a dict for easier paramaterization of the code.
+
 import yaml
 import os
 

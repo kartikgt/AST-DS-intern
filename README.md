@@ -1,7 +1,7 @@
 # Enriching Billing Price Transparency Data
 
 Insurance companies are now required to publish their rates for the various procedures they cover.
-In order to make this published data usable for analysts, we are enriching these data with
+In order to make this resource usable for analysts, we are enriching these data with
 addtional external sources. This repo contains some code for getting supplemental data on 
 billing codes and merging it on to the innetwork rates file.
 
@@ -35,14 +35,17 @@ the current solution to very extensible and limit code duplication. Priorities:
 refactor the current process in `main.py` to implement the interface for the current two files
 4. Come up with something better than a raw sql string? Ideas welcome.
 
-Please exercise your creativity and wisdom about what makes for readable, maintainable, and extensible code. 
-We are not looking for a reproduction of how we would structure a solution, but to see how
-you go about solving problems in your code. 
-
-
 ## Contributing Guidlines
 Making sure others can use your code is extremely important. So please:
-* Use docstrings to explain the api of your functions. 
-* Update this README with info about how others should use and extend your solution.
-* Use variable names others can understand!
-* Add tests to your code so others can verify that their changes are not breaking
+* Write [semantic commit](https://sparkbox.com/foundry/semantic_commit_messages) checkpoints 
+with clear explanations of your changes
+* Use docstrings to explain the API of your functions (See `src/utils.py` for an example). 
+* Update this README with instructions for how others should use and extend your solution.
+* Add tests to your code so others can verify that their changes are not breaking. 
+We generally use pytest. It's installed in the env and there's an example in 'tests/', but
+don't waste your time learning a new framework if you haven't used pytest before. Any testing
+is better than none!
+
+Please exercise your creativity and wisdom about what makes for readable, maintainable, and 
+extensible code. We are not looking for a reproduction of how we would structure a solution, 
+but to see how you go about solving problems in your code. 

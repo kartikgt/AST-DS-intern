@@ -56,6 +56,14 @@ def get_mdc_drg():
 
 
 def clean_mdc_drg_row(row):
+    """cleaning the html text to make a list of values
+
+    Args:
+        row (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """
     row = row.strip("\\r\\n")
     parts = row.split(",", 3)
     if len(parts) < 3:
@@ -81,7 +89,7 @@ def get_mdc_descriptions():
 mdc_drg_df = get_mdc_drg()
 
 # In the future, we want to use a database in the cloud, but we're using sqlite for development
-# right now
+# right now. Need to keep flexibility in mind for now.
 import sqlite3
 con = sqlite3.connect("tutorial.db")
 
@@ -120,7 +128,3 @@ ON in_network_codes.billing_code = apr_drg.drg
 """
 cur = con.cursor()
 cur.executescript(merge_query)
-
-query = "select * from apr_drg"
-
-cur.executescript(query)
