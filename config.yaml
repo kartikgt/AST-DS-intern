@@ -1,0 +1,8 @@
+apr_drg_url:
+  "https://apps.3mhis.com/docs/Groupers/All_Patient_Refined_DRG/apr400_DRG_descriptions.txt"
+mdc_url:
+  "https://www.cms.gov/icd10m/version39.1-fullcode-cms/fullcode_cms/P0377.html"
+mdc_descriptors_url:
+  "https://resdac.org/sites/datadocumentation.resdac.org/files/Major%20Diagnostic%20Category.txt"
+db:
+  "tutorial.db"
